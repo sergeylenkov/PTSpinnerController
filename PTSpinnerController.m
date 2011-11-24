@@ -11,7 +11,9 @@ static PTSpinnerController *sharedInstance = nil;
 
 @implementation PTSpinnerController
 
-@synthesize title;
+@synthesize titleLabel;
+@synthesize activityView;
+@synthesize text;
 
 + (PTSpinnerController *)sharedSpinner {
     @synchronized(self) {
@@ -21,6 +23,13 @@ static PTSpinnerController *sharedInstance = nil;
     }
     
     return sharedInstance;
+}
+
++ (PTSpinnerController *)spinnerControllerWithText:(NSString *)aText {
+    PTSpinnerController *controller = [[[PTSpinnerController alloc] initWithNibName:@"PTSpinnerView" bundle:nil] autorelease];
+    controller.text = aText;
+    
+    return controller;
 }
 
 - (id)initWithCoder:(NSCoder *)coder {
@@ -34,15 +43,25 @@ static PTSpinnerController *sharedInstance = nil;
 }
 
 - (void)dealloc {
-    [title release];
+    [titleLabel release];
+    [activityView release];
+    [text release];
     [super dealloc];
 }
 
+- (void)setText:(NSString *)newText {
+    if (text != newText) {
+        [text release];
+        text = [newText copy];
+    }
+}
+
 - (void)showInView:(UIView *)parentView {
-    titleLabel.text = title;
-    [activityView startAnimating];
-    
     [parentView addSubview:self.view];
+    self.view.center = parentView.center;
+    
+    titleLabel.text = text;
+    [activityView startAnimating];
 }
 
 - (void)hide {

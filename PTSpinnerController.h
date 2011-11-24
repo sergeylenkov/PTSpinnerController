@@ -11,12 +11,15 @@
 @interface PTSpinnerController : UIViewController {
     IBOutlet UILabel *titleLabel;
     IBOutlet UIActivityIndicatorView *activityView;
-    NSString *title;
+    NSString *text;
 }
 
-@property (nonatomic, copy) NSString *title;
+@property (nonatomic, retain) UILabel *titleLabel;
+@property (nonatomic, retain) UIActivityIndicatorView *activityView;
+@property (nonatomic, copy) NSString *text;
 
 + (PTSpinnerController *)sharedSpinner;
++ (PTSpinnerController *)spinnerControllerWithText:(NSString *)aText;
 
 - (void)showInView:(UIView *)parentView;
 - (void)hide;

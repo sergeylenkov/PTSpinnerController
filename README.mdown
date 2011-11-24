@@ -1,0 +1,19 @@
+Spinner with text.
+
+Using PTSpinnerController
+===================================
+
+Add files into your project
+
+Import class
+
+	import "PTSpinnerController.h"
+	
+Show spinner
+
+	spinnerController = [PTSpinnerController spinnerControllerWithText:@"Loading"];
+	[spinnerController showInView:self.view];
+	
+Hide spinner
+
+    [spinnerController hide];
