@@ -1,7 +1,6 @@
-Spinner with text.
+### Spinner with text.
 
-Using PTSpinnerController
-===================================
+#### Using PTSpinnerController
 
 Add files into your project
 
