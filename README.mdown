@@ -11,9 +11,12 @@ Import class
 	
 Show spinner
 
-	spinnerController = [PTSpinnerController spinnerControllerWithText:@"Loading"];
+	spinnerController = [PTSpinnerController spinnerControllerWithText:@"Loading..."];
 	[spinnerController showInView:self.view];
 	
 Hide spinner
 
     [spinnerController hide];
+
+
+![PTSpinnerController](http://farm8.staticflickr.com/7163/6395629327_ae9dcb9523.jpg)
